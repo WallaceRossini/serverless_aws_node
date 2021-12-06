@@ -1,0 +1,20 @@
+service: api-rest
+
+frameworkVersion: "2"
+
+plugins: 
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  show:
+    handler: handler.show
+    events:
+      - http:
+          path: show
+          method: get
