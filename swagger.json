@@ -1,0 +1,39 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Project with serverless",
+    "version": "1.0.0",
+    "title": "Serverless"
+  },
+  "host": "127.0.0.1:3000",
+  "basePath": "/dev",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/show": {
+      "get": {
+        "tags": [
+          "show"
+        ],
+        "summary": "Get the quantity and total price from the product list",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success request"
+          },
+          "405": {
+            "description": "Error request"
+          }
+        }
+      }
+    }
+  }
+}

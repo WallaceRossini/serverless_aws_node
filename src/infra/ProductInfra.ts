@@ -1,19 +1,29 @@
 import axios from 'axios';
+import { TypeMethod } from '../models/TypeMethod';
 import { MessageUtil } from '../utils/message';
 
+
+
+type Params = {
+  url: string,
+  method: TypeMethod
+  params?: any
+}
 export class ProductInfra {
 
 
-  async axios_request() {
+  async axios_request({ url,method,params }: Params) {
 
     try {
 
-      const { data } = await axios.get(`${process.env.URL_HEROKU}`);
+      const { data, status } = await axios({
+        url,
+        method,
+        params,
+      });
 
-      if(data)
+      if (status == 200)
         return data;
-
-      return {}
 
     } catch (err) {
       return MessageUtil.error(err.code, err.message)

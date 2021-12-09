@@ -1,14 +1,16 @@
 {
   "scripts": {
-    "start":"serverless offline"
+    "start": "serverless offline",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
   "devDependencies": {
+    "serverless-dotenv-plugin": "^3.10.0",
+    "serverless-offline": "^8.3.1",
     "serverless-plugin-typescript": "^2.1.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "axios": "^0.24.0",
-    "dotenv": "^10.0.0",
-    "serverless-offline": "^8.3.1"
+    "axios": "^0.24.0"
   }
 }

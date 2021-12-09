@@ -1,10 +1,10 @@
-export class ResponseBodyVO {
+export type ResponseBodyVO ={
   code: number;
   message: string;
   data?: object;
 }
 
-export class ResponseVO {
+export type ResponseVO = {
   statusCode: number;
   body: string;
 }

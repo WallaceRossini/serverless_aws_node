@@ -5,6 +5,7 @@ frameworkVersion: "2"
 plugins: 
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-dotenv-plugin
 
 provider:
   name: aws
@@ -13,7 +14,7 @@ provider:
 
 functions:
   show:
-    handler: handler.show
+    handler: "./src/handler.show"
     events:
       - http:
           path: show
