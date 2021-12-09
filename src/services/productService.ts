@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { products } from '../data/product';
 import { ProductInfra } from '../infra/ProductInfra';
 import { TypeMethod } from '../models/TypeMethod';
@@ -7,8 +6,8 @@ require('dotenv').config()
 
 
 type ServiceResponse = {
-  amount: number,
-  full_price: number
+  amount?: number,
+  full_price?: number
 }
 export class ProductService {
 
@@ -20,10 +19,18 @@ export class ProductService {
 
       const productInfra = new ProductInfra();
 
-      const data = await productInfra.axios_request({
+      const { data, status } = await productInfra.axios_request({
         url: String(process.env.URL),
         method: TypeMethod.GET
       });
+
+      if(status!= 200){
+        throw new Error('Error request');
+      }
+
+      if(!data){
+        return {}
+      }
 
       list = data;
 
@@ -36,7 +43,7 @@ export class ProductService {
 
     } catch (err) {
 
-      return err
+      throw new Error(err)
 
     }
   }

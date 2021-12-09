@@ -5,15 +5,15 @@ import { MessageUtil } from "../utils/message";
 export class ProductController {
 
 
-  async index(){
-    
+  async index() {
+
     try {
 
       const product_service = new ProductService();
 
-      const {amount,full_price} = await product_service.show();
+      const { amount, full_price } = await product_service.show();
 
-      return MessageUtil.success({amount,full_price});
+      return MessageUtil.success({ amount, full_price });
 
     } catch (error) {
       return MessageUtil.error(
