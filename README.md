@@ -24,18 +24,20 @@ It uses `run-curl-tests.rb` which runs each command defined in
 ## Run the app
 
 ```
-  yarn install
+  yarn start
     or
-  npm install
+  npm start
 
 ```
 
 ## Run the tests
 
+First start the application(``` yarn start or npm start```) and then run the tests 
+
 ```
-  yarn install
+  yarn test 
     or
-  npm install
+  npm test
 
 ```
 

@@ -2,12 +2,19 @@
   "scripts": {
     "start": "serverless offline",
     "build": "tsc --build",
-    "clean": "tsc --build --clean"
+    "clean": "tsc --build --clean",
+    "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/supertest": "^2.0.11",
+    "jest": "^27.4.3",
     "serverless-dotenv-plugin": "^3.10.0",
     "serverless-offline": "^8.3.1",
     "serverless-plugin-typescript": "^2.1.0",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {
