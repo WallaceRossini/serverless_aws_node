@@ -22,7 +22,9 @@ export class ProductInfra {
       const response = await axios({
         url,
         method,
-        params,
+        params:{
+          params
+        }
       });
 
       return response;

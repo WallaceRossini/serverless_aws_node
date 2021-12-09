@@ -17,5 +17,5 @@ functions:
     handler: "./src/handler.show"
     events:
       - http:
-          path: show
+          path: show/{product_type}
           method: get

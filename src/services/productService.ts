@@ -1,9 +1,7 @@
-import { products } from '../data/product';
 import { ProductInfra } from '../infra/ProductInfra';
+import { PathParameters } from '../models/Response';
 import { TypeMethod } from '../models/TypeMethod';
-import { MessageUtil } from '../utils/message';
 require('dotenv').config()
-
 
 type ServiceResponse = {
   amount?: number,
@@ -11,7 +9,7 @@ type ServiceResponse = {
 }
 export class ProductService {
 
-  async show(): Promise<ServiceResponse> {
+  async show({ product_type }: PathParameters): Promise<ServiceResponse> {
 
     try {
       let list: Array<object>
@@ -21,14 +19,17 @@ export class ProductService {
 
       const { data, status } = await productInfra.axios_request({
         url: String(process.env.URL),
-        method: TypeMethod.GET
+        method: TypeMethod.GET,
+        params:{
+          product_type
+        }
       });
 
-      if(status!= 200){
+      if (status != 200) {
         throw new Error('Error request');
       }
 
-      if(!data){
+      if (!data) {
         return {}
       }
 

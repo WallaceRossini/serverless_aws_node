@@ -8,3 +8,7 @@ export type ResponseVO = {
   statusCode: number;
   body: string;
 }
+
+export type PathParameters = {
+  product_type?: string;
+}
