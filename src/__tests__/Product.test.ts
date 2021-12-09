@@ -6,7 +6,6 @@ describe("Product",() => {
 
   it("Get amount and full price", async () => {
 
-    console.log(base_url)
     const response = await axios.get(`${base_url}/show`)
 
     expect(response.status).toBe(200);
