@@ -17,7 +17,7 @@ export class ProductService {
 
       const productInfra = new ProductInfra();
 
-      const { data, status } = await productInfra.axios_request({
+      const { data, status} = await productInfra.axios_request({
         url: String(process.env.URL),
         method: TypeMethod.GET,
         params:{
