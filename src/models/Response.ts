@@ -9,6 +9,6 @@ export type ResponseVO = {
   body: string;
 }
 
-export type PathParameters = {
-  product_type?: string;
+export type QueryParameters = {
+  product_type: string 
 }

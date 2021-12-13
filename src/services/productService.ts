@@ -1,5 +1,4 @@
 import { ProductInfra } from '../infra/ProductInfra';
-import { PathParameters } from '../models/Response';
 import { TypeMethod } from '../models/TypeMethod';
 require('dotenv').config()
 
@@ -7,9 +6,13 @@ type ServiceResponse = {
   amount?: number,
   full_price?: number
 }
+
+type Params = {
+  product_type: string | undefined
+}
 export class ProductService {
 
-  async show({ product_type }: PathParameters): Promise<ServiceResponse> {
+  async show({ product_type }:Params): Promise<ServiceResponse> {
 
     try {
       let list: Array<object>
@@ -17,10 +20,10 @@ export class ProductService {
 
       const productInfra = new ProductInfra();
 
-      const { data, status} = await productInfra.axios_request({
+      const { data, status } = await productInfra.axios_request({
         url: String(process.env.URL),
         method: TypeMethod.GET,
-        params:{
+        params: {
           product_type
         }
       });

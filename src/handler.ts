@@ -1,20 +1,22 @@
-import { PathParameters } from "./models/Response";
+import { QueryParameters } from "./models/Response";
 import { ProductService } from "./services/productService";
 import { MessageUtil } from "./utils/message";
 
-
-
-
 export const show = async (event: any) => {
+
+  let product_type: string | undefined = undefined;
+
   try {
 
-    const { product_type }: PathParameters = event.pathParameters;
+    if (event.queryStringParameters) {
+      product_type = event.queryStringParameters.product_type 
+      ? event.queryStringParameters.product_type 
+      : undefined;
+    }
 
-    if (!product_type)
-      return MessageUtil.error(
-        404,
-        'Product type cannot be empty or null'
-      )
+    if(!product_type){
+      throw new Error('Product type cannot empty')
+    }
 
     const product_service = new ProductService();
 
@@ -23,9 +25,6 @@ export const show = async (event: any) => {
     return MessageUtil.success({ amount, full_price });
 
   } catch (error) {
-    return MessageUtil.error(
-      error.code,
-      error.message
-    )
+    throw new Error(error)
   }
 }
